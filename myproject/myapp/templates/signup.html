@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form validation</title>
+  <link rel="stylesheet" href="{% static "signup.css" %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Signup</h2>
+    </div>
+
+    <form class="form" id="form" method='post'>
+    {% csrf_token %}
+      <div class="form-control">
+        <label>Username</label>
+        <input type="text" placeholder="username" id="username" name="username">
+        <small>Error Message</small>
+      </div>
+
+      <div class="form-control">
+        <label>Email</label>
+        <input type="text" placeholder="Email address" id="email" name="email">
+        <small>Error Message</small>
+      </div>
+
+       <div class="form-control">
+        <label>Mobile Number</label>
+        <input type="tel" placeholder="10 digits number" id="mobile_number" name='mobile_number'>
+        <small>Error Message</small>
+      </div>
+
+      <div class="form-control">
+        <label>Password</label>
+        <input type="password" placeholder="password" id="password" name="password">
+        <small>Error Message</small>
+      </div>
+
+      <div class="form-control">
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <small>Error Message</small>
+      </div>
+
+      <button type="submit">Signup</button>
+      <p>Already have an account?<a href="{% url "login" %}">Login</p>
+    </form>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $("#form").on("submit", function(e){
+        if(!checkInput()){
+          e.preventDefault();
+        }
+      });
+
+      function checkInput(){
+        let usernameValue = $("#username").val().trim();
+        let emailValue    = $("#email").val().trim();
+        let mobile_numberValue = $("#mobile_number").val().trim();
+        let passwordValue = $("#password").val().trim();
+        let password2Value= $("#password2").val().trim();
+
+        // Username
+        if(usernameValue === ""){
+          toastr.error("Username cannot be blank");
+          return false;
+        }
+        else if(!/^[A-Za-z]+$/.test(usernameValue)){
+          toastr.error("Username must contain only letters");
+          return false;
+        }
+       
+
+        // Email
+        if(emailValue === ""){
+          toastr.error("Email cannot be blank");
+          return false;
+        }
+        else if(!isEmail(emailValue)){
+          toastr.error("Not a valid Email");
+          return false;
+        }
+       
+
+        // mobile number
+
+        if(mobile_numberValue === ""){
+          toastr.error("Mobile number cannot be blank");
+          return false;
+        }
+        else if(!/^[0-9]{10}$/.test(mobile_numberValue)){
+            toastr.error("Enter a valid 10-digit mobile number");
+            return false;
+        }
+        
+
+        // Password
+        if(passwordValue === ""){
+          toastr.error("Password cannot be blank");
+          return false;
+        }
+        else if(!(/^[A-Z][A-Za-z0-9!@#$%^&*]{2,}$/.test(passwordValue)
+                  && /[0-9]/.test(passwordValue)
+                  && /[!@#$%^&*]/.test(passwordValue))){
+          toastr.error("Password must start with uppercase, include a number and a special character");
+          return false;
+
+        }
+        
+        // Confirm Password
+        if(password2Value === ""){
+          toastr.error("Confirm Password cannot be blank");
+          return false;
+        }
+        else if(passwordValue !== password2Value){
+          toastr.error("Passwords do not match");
+          return false;
+        }
+      alert('Registration Successfull!');
+      return true;
+      }
+       
+      function isEmail(email){
+        return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
+      }
+
+
+    });
+  </script>
+</body>
+</html>

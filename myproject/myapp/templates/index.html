@@ -10,15 +10,21 @@
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-
-  <div class="container">
-    <h1>Welcome to MySite</h1>
-    <p>Your simple and secure web app.</p>
-    <div class="buttons">
-      <a href="#">Login</a>
-      <a href="#">Register</a>
+  <div class="hero-section">
+    <div class="glass-card">
+        <div class="logo">🛡️</div>
+        <h1>Secure<span>Auth</span></h1>
+        <p>Expertly crafted authentication system. Simple. Powerful. Secure.</p>
+        
+        <div class="action-buttons">
+            <a href="{% url "login" %}" class="btn-primary">Get Started</a>
+            <a href="{% url "signup" %}" class="btn-secondary">Create Account</a>
+        </div>
     </div>
-  </div>
-
+</div>
+ 
 </body>
 </html>
+
+
+

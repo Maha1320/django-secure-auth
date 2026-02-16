@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - MySite</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static "login.css" %}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+<section class='bg'>
+  <div class='container'>
+    <div class='row d-flex justify-content-center'>
+  <div class='col-md-4'>
+  <div class='form-wrap'>
+    <div class='form-heading'>
+      <h1>Login</h1>
+      <p>Enter registered data</p>
+    </div>
+
+        <form name='regForm' id='regForm' action='#' method='post'>
+        {% csrf_token %}
+        <div class='form-group'>
+        <label>Username</label>
+        <input type='text' class='form-control' id='username' name='username' placeholder='UserName'>
+        <p id='p1'></p>
+        </div>
+
+            
+        <div class='form-group'>
+        <label>Password</label>
+        <input type='password' class='form-control' id='password' name='password' placeholder='Password'>
+        <p id='p2'></p>
+        </div>
+
+        <div class='form-group'>
+
+        <input type='submit' class='btn btn-primary btn-block' id='submit' value='Login'>
+        <p><a href="#">Forgot password</p>
+        </div>
+        </form>
+        </div>
+    </div>
+ </div>
+</div>
+</section>
+
+        
+<script>
+$(document).ready(function(){
+
+  $("#regForm").on("submit", function(e){
+    e.preventDefault();
+
+    // Clear previous errors
+    $("#p1, #p2").text("");
+
+    let username = $("#username").val().trim();
+    let password = $("#password").val().trim();
+    let hasError = false;
+
+    if(username.length === 0){
+      $("#p1").text(" Please enter your username");
+      hasError = true;
+    }
+
+    if(password.length === 0){
+      $("#p2").text(" Please enter your password");
+      hasError = true;
+    }
+
+    
+
+    if(username && username !== registeredUsername){
+      $("#p1").text(" Username not found");
+      hasError = true;
+    }
+
+    if(password && password !== registeredPassword){
+      $("#p2").text(" Incorrect password");
+      hasError = true;
+    }
+
+    if(!hasError){
+      alert(" Login successful!");
+      this.submit();
+    }
+  });
+
+});
+</script>
+</body>
+</html>
