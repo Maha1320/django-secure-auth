@@ -87,8 +87,8 @@
     font-weight: 500;
     color: #b5b5;
 }
-.btn-primary{
-    background: #4be22d;
+.btn{
+    background: #54f534;
     border: none;
     margin: 20px 0px 0px 0px;
     width: 350px;
@@ -96,8 +96,10 @@
     text-transform: capitalize;
     font-size: 14px;
     font-weight: 600;
-    background: linear-gradient(to right, #00e00b, #42e22d);
-
+   
+}
+.btn:hover{
+    background: rgb(218, 253, 194);
 }
 #p1, #p2, #p3{
     color: #ff0000;

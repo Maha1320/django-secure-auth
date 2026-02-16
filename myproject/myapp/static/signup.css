@@ -7,18 +7,17 @@
 }
 
 body {
-    background-image: url('images/sign.jpg');
-    background-size: cover;
+    background: rgb(230, 245, 207) ;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Scroll varaama irukka */
+    overflow: hidden; 
 }
 
 /* Card design */
 .container {
-    background: rgba(255, 255, 255, 0.1);
+    background: white;
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
@@ -28,9 +27,10 @@ body {
 }
 
 .header h2 {
-    color: white;
+    color: rgb(12, 65, 163);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    
 }
 
 /* Input box-galukkaana spacing */
@@ -40,26 +40,27 @@ body {
 
 .form-control label {
     display: block;
-    color: #eee;
+    color: #020000;
     font-size: 13px;
     margin-bottom: 5px;
 }
 
 .form-control input {
     width: 100%; /* Card kulla correct-ah fit aagum */
-    padding: 10px;
+    padding: 13px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(43, 112, 216, 0.3);
     background: rgba(255, 255, 255, 0.1);
-    color: white;
+    color: black;
     outline: none;
+    
 }
 
 .form-control input:focus {
-    border-color: #00d2ff;
+    border-color: #00ff6a;
 }
 
-/* Error message (Small tag) invisible-ah vekkirathu */
+
 .form-control small {
     display: block;
     height: 0;
@@ -82,16 +83,12 @@ button {
 }
 
 button:hover {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: #fff;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    background: rgba(71, 102, 61, 0.5);
+    
 }
 
 p {
-    color: white;
+    color: rgb(12, 12, 12);
     text-align: center;
     font-size: 13px;
     margin-top: 15px;
@@ -99,12 +96,12 @@ p {
 
 /* Link color - Blue */
 p a {
-    color: #00d2ff;
+    color: #0011ff;
     text-decoration: none;
     transition: all 0.3s ease; 
 }
 
 p a:hover {
-    color: #e7ce7a; 
+    color: rgb(31, 231, 12); 
     text-decoration: underline;
 }
